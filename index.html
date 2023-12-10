@@ -66,8 +66,9 @@ print (w)
                   .then(_pyodide => {
                     console.log(`just now ${!!pyodide ? "overriding..." : "new"}`);
                     pyodide = _pyodide;
-                    res(pyodide);
+                    return pyodide.loadPackage("numpy");
                   })
+                  .then(() => res(pyodide));
                 }
             })
         })();
