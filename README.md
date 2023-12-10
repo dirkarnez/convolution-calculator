@@ -1,3 +1,4 @@
-[complex-number-calculator](https://dirkarnez.github.io/complex-number-calculator/)
+[convolution-calculato](https://dirkarnez.github.io/convolution-calculator/)
 ===================================================================================
-[cmath — Mathematical functions for complex numbers — Python 3.12.0 documentation](https://docs.python.org/3/library/cmath.html)
+- [numpy.convolve — NumPy v1.26 Manual](https://numpy.org/doc/stable/reference/generated/numpy.convolve.html)
+- [But what is a convolution? - YouTube](https://www.youtube.com/watch?v=KuXjwB4LzSA)
