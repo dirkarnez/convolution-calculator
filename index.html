@@ -16,6 +16,40 @@
     <button id="btn_submit">Submit</button>
     <br>
     <div id="console_output"></div>
+    <code>
+      x = [1, 2, 3]
+      h = [4, 5, 6]
+
+
+      
+      x[n] = δ[n] + 2δ[n-1] + 3δ[n-2]
+      h[n] = 4δ[n] + 5δ[n-1] + 6δ[n-2]
+      
+      y[n] = x[n] * h[n]
+      
+      y[n] = x[n] * (4δ[n] + 5δ[n-1] + 6δ[n-2])
+      y[n] = 4*x[n] + 5*x[n-1] + 6*x[n-2]
+      
+      y[n] = 
+      4*(δ[n] + 2δ[n-1] + 3δ[n-2]) + 
+      5*(δ[n-1] + 2δ[n-2] + 3δ[n-3]) + 
+      6*(δ[n-2] + 2δ[n-3] + 3δ[n-4])
+      
+      y[n] = 
+      4*δ[n] + 8δ[n-1] + 12δ[n-2] + 
+      5δ[n-1] + 10δ[n-2] + 15δ[n-3] + 
+      6δ[n-2] + 12δ[n-3] + 18δ[n-4]
+      
+      
+      y[n] = 
+      4*δ[n] + 
+      8δ[n-1] + 5δ[n-1] + 
+      12δ[n-2] + 10δ[n-2] + 6δ[n-2] + 
+      15δ[n-3] + 12δ[n-3] + 
+      18δ[n-4]
+      
+      4 11 28 27 18
+    </code>
     <script type="text/javascript">
       const code = `import numpy as np
 print(np.convolve(np.array([1, 2, 3]), np.array([4, 5, 6])))
