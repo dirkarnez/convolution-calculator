@@ -37,13 +37,13 @@
         6*(δ[n-2] + 2δ[n-3] + 3δ[n-4])
         
         y[n] = 
-        4*δ[n] + 8δ[n-1] + 12δ[n-2] + 
+        4δ[n] + 8δ[n-1] + 12δ[n-2] + 
         5δ[n-1] + 10δ[n-2] + 15δ[n-3] + 
         6δ[n-2] + 12δ[n-3] + 18δ[n-4]
         
-        
+        // rearrange and count occurrence
         y[n] = 
-        4*δ[n] + 
+        4δ[n] + 
         8δ[n-1] + 5δ[n-1] + 
         12δ[n-2] + 10δ[n-2] + 6δ[n-2] + 
         15δ[n-3] + 12δ[n-3] + 
@@ -61,31 +61,35 @@ print(np.convolve(np.array([1, 2, 3]), np.array([4, 5, 6])))
         textareaInput.value = code;
       
         const getPyodidePromise = (() => {
-        	let pyodide;
+          let pyodide;
             
-            return () => new Promise(res => {
-            	if (!!pyodide) {
-                	console.log("already");
-                	res(pyodide);
-                } else {
-                  loadPyodide({
-                    fullStdLib: true,
-                    stdout: msg => consoleOutput.innerHTML += `${msg}<br>`,
-                  })
-                  .then(_pyodide => {
-                    console.log(`just now ${!!pyodide ? "overriding..." : "new"}`);
-                    pyodide = _pyodide;
-                    return pyodide.loadPackage("numpy");
-                  })
-                  .then(() => res(pyodide));
-                }
-            })
+          return () => new Promise(res => {
+            if (!!pyodide) {
+                console.log("already");
+                res(pyodide);
+            } else {
+              loadPyodide({
+                fullStdLib: true,
+                stdout: msg => consoleOutput.innerHTML += `${msg}<br>`,
+              })
+              .then(_pyodide => {
+                console.log(`just now ${!!pyodide ? "overriding..." : "new"}`);
+                pyodide = _pyodide;
+                return pyodide.loadPackage("numpy");
+              })
+              .then(() => res(pyodide));
+            }
+          });
         })();
+
+        const btnSubmit = document.getElementById("btn_submit");
         
-        document.getElementById("btn_submit").addEventListener("click", function() {
+        btnSubmit.addEventListener("click", function() {
+            btnSubmit.disabled = true;
             consoleOutput.innerHTML = "";
         	  getPyodidePromise()
             .then(pyodide => {
+              btnSubmit.disabled = false;
               pyodide.runPython(textareaInput.value);
             })
         });
