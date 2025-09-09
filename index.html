@@ -14,10 +14,10 @@
       </style>
   </head>
   <body>
-    <a href="https://dirkarnez.github.io/convolution-calculator/" target="_blank"></a><br>
-    Pyodide test page <br>
-    Open your browser console to see Pyodide output
- 	  <textarea id="textarea_input" rows="10" placeholder="Once upon a time..."></textarea>
+    <a href="https://dirkarnez.github.io/convolution-calculator/" target="_blank">dirkarnez/convolution-calculator</a><br>
+      Pyodide test page <br>
+      Open your browser console to see Pyodide output<br>
+      <textarea id="textarea_input" rows="10" placeholder="Once upon a time..."></textarea>
     <br>
     <button id="btn_submit">Submit</button>
     <br>
@@ -91,13 +91,20 @@ print(np.convolve(np.array([1, 2, 3]), np.array([4, 5, 6])))
         const btnSubmit = document.getElementById("btn_submit");
         
         btnSubmit.addEventListener("click", function() {
+            btnSubmit.innerText = `Submitting...`;
             btnSubmit.disabled = true;
             consoleOutput.innerHTML = "";
-        	  getPyodidePromise()
+            getPyodidePromise()
             .then(pyodide => {
-              btnSubmit.disabled = false;
-              pyodide.runPython(textareaInput.value);
+                  btnSubmit.innerText = `Submitted`;
+                  pyodide.runPython(textareaInput.value);
             })
+            .catch(e => {
+                  btnSubmit.innerText = `${e}`;
+            })
+            .finally(() => {
+                  btnSubmit.disabled = false;
+            });
         });
     </script>
   </body>
