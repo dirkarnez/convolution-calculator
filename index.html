@@ -17,55 +17,20 @@
     <a href="https://dirkarnez.github.io/convolution-calculator/" target="_blank">dirkarnez/convolution-calculator</a><br>
       Pyodide test page <br>
       Open your browser console to see Pyodide output<br>
-      <textarea id="textarea_input" rows="10" placeholder="Once upon a time..."></textarea>
+      <textarea id="textarea-input" rows="10" placeholder="Once upon a time..."></textarea>
     <br>
-    <button id="btn_submit">Submit</button>
+    <button id="btn-submit">Submit</button>
     <br>
-    <div id="console_output"></div>
-    <pre>
-      <code>
-        x = [1, 2, 3]
-        h = [4, 5, 6]
-  
-  
-        // from https://people.eecs.ku.edu/~perrins/class/F14_360/lab/labnotes4.pdf
-        x[n] = δ[n] + 2δ[n-1] + 3δ[n-2]
-        h[n] = 4δ[n] + 5δ[n-1] + 6δ[n-2]
-        
-        y[n] = x[n] * h[n]
-        
-        y[n] = x[n] * (4δ[n] + 5δ[n-1] + 6δ[n-2])
-        y[n] = 4*x[n] + 5*x[n-1] + 6*x[n-2]
-        
-        y[n] = 
-        4*(δ[n] + 2δ[n-1] + 3δ[n-2]) + 
-        5*(δ[n-1] + 2δ[n-2] + 3δ[n-3]) + 
-        6*(δ[n-2] + 2δ[n-3] + 3δ[n-4])
-        
-        y[n] = 
-        4δ[n] + 8δ[n-1] + 12δ[n-2] + 
-        5δ[n-1] + 10δ[n-2] + 15δ[n-3] + 
-        6δ[n-2] + 12δ[n-3] + 18δ[n-4]
-        
-        // rearrange and count occurrence
-        y[n] = 
-        4δ[n] + 
-        8δ[n-1] + 5δ[n-1] + 
-        12δ[n-2] + 10δ[n-2] + 6δ[n-2] + 
-        15δ[n-3] + 12δ[n-3] + 
-        18δ[n-4]
-        
-        4 11 28 27 18
-      </code>
-    </pre>
+    <div id="console-output"></div>
+    <pre><code id="my-notes"></code></pre>
     <script type="text/javascript">
       const code = `import numpy as np
 print(np.convolve(np.array([1, 2, 3]), np.array([4, 5, 6])))
 `;
-        const consoleOutput = document.getElementById("console_output");
-     	  const textareaInput = document.getElementById("textarea_input");
+        const consoleOutput = document.getElementById("console-output");
+     	  const textareaInput = document.getElementById("textarea-input");
+          
         textareaInput.value = code;
-      
         const getPyodidePromise = (() => {
           let pyodide;
             
@@ -88,8 +53,7 @@ print(np.convolve(np.array([1, 2, 3]), np.array([4, 5, 6])))
           });
         })();
 
-        const btnSubmit = document.getElementById("btn_submit");
-        
+        const btnSubmit = document.getElementById("btn-submit");
         btnSubmit.addEventListener("click", function() {
             btnSubmit.innerText = `Submitting...`;
             btnSubmit.disabled = true;
@@ -106,6 +70,41 @@ print(np.convolve(np.array([1, 2, 3]), np.array([4, 5, 6])))
                   btnSubmit.disabled = false;
             });
         });
+
+        const myNotes = document.getElementById("my-notes");
+        myNotes.innerText = `x = [1, 2, 3]
+h = [4, 5, 6]
+
+
+// from https://people.eecs.ku.edu/~perrins/class/F14_360/lab/labnotes4.pdf
+x[n] = δ[n] + 2δ[n-1] + 3δ[n-2]
+h[n] = 4δ[n] + 5δ[n-1] + 6δ[n-2]
+
+y[n] = x[n] * h[n]
+
+y[n] = x[n] * (4δ[n] + 5δ[n-1] + 6δ[n-2])
+y[n] = 4*x[n] + 5*x[n-1] + 6*x[n-2]
+
+y[n] = 
+4*(δ[n] + 2δ[n-1] + 3δ[n-2]) + 
+5*(δ[n-1] + 2δ[n-2] + 3δ[n-3]) + 
+6*(δ[n-2] + 2δ[n-3] + 3δ[n-4])
+
+y[n] = 
+4δ[n] + 8δ[n-1] + 12δ[n-2] + 
+5δ[n-1] + 10δ[n-2] + 15δ[n-3] + 
+6δ[n-2] + 12δ[n-3] + 18δ[n-4]
+
+// rearrange and count occurrence
+y[n] = 
+4δ[n] + 
+8δ[n-1] + 5δ[n-1] + 
+12δ[n-2] + 10δ[n-2] + 6δ[n-2] + 
+15δ[n-3] + 12δ[n-3] + 
+18δ[n-4]
+
+4 13 28 27 18
+`;
     </script>
   </body>
 </html>
