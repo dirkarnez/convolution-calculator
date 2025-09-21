@@ -14,7 +14,7 @@
       </style>
   </head>
   <body>
-    <a href="https://dirkarnez.github.io/convolution-calculator/" target="_blank">dirkarnez/convolution-calculator</a><br>
+    <a href="https://github.com/dirkarnez/convolution-calculator/" target="_blank">dirkarnez/convolution-calculator</a><br>
       Pyodide test page <br>
       Open your browser console to see Pyodide output<br>
       <textarea id="textarea-input" rows="10" placeholder="Once upon a time..."></textarea>
@@ -46,7 +46,7 @@ print(np.convolve(np.array([1, 2, 3]), np.array([4, 5, 6])))
               .then(_pyodide => {
                 console.log(`just now ${!!pyodide ? "overriding..." : "new"}`);
                 pyodide = _pyodide;
-                return pyodide.loadPackage("numpy");
+                return pyodide.loadPackage("numpy", "scipy");
               })
               .then(() => res(pyodide));
             }
