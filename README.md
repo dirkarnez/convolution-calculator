@@ -7,3 +7,23 @@
 ### TODOs
 - [ ] 2D Convolution
   - [Example of 2D Convolution](https://www.songho.ca/dsp/convolution/convolution2d_example.html)
+  - ```python
+    import numpy as np
+    from scipy.signal import convolve2d
+    
+    # Example image (5x5)
+    image = np.array([[1, 2, 3, 0, 1],
+                      [4, 5, 6, 1, 0],
+                      [7, 8, 9, 0, 1],
+                      [0, 1, 2, 3, 4],
+                      [1, 0, 1, 0, 5]])
+    
+    # Example kernel (3x3)
+    kernel = np.array([[1, 0, -1],
+                       [1, 0, -1],
+                       [1, 0, -1]])
+    
+    # Perform convolution
+    result = convolve2d(image, kernel, mode='valid')
+    print(result)
+    ```
