@@ -7,6 +7,9 @@
 ### TODOs
 - [ ] 2D Convolution
   - [Example of 2D Convolution](https://www.songho.ca/dsp/convolution/convolution2d_example.html)
+  - [Example of 2D Convolution](https://www.songho.ca/dsp/convolution/convolution2d_example.html)
+  - [Proof of Separable Convolution 2D](https://www.songho.ca/dsp/convolution/convolution2d_separable.html)
+  - [Proof of Commutative Property of Convolution](https://www.songho.ca/dsp/convolution/convolution_commutative.html)
   - ```python
     import numpy as np
     from scipy.signal import convolve2d
