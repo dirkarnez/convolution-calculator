@@ -46,7 +46,7 @@ print(np.convolve(np.array([1, 2, 3]), np.array([4, 5, 6])))
               .then(async _pyodide => {
                     console.log(`just now ${!!pyodide ? "overriding..." : "new"}`);
                     pyodide = _pyodide;
-                    return await pyodide.loadPackage("numpy", "scipy", "micropip");
+                    return await pyodide.loadPackage(["numpy", "scipy", "micropip"]);
               })
               .then(async () => {
                     const micropip = pyodide.pyimport("micropip");
