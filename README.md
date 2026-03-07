@@ -6,7 +6,7 @@
 
 ### TODOs
 - [ ] $n < 0$ convoltution
-- [ ] continuous time convolution
+- [ ] continuous time convolution (symolically)
 - [ ] 2D Convolution
   - [Example of 2D Convolution](https://www.songho.ca/dsp/convolution/convolution2d_example.html)
   - [Example of 2D Convolution](https://www.songho.ca/dsp/convolution/convolution2d_example.html)
