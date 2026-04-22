@@ -4,6 +4,16 @@
 - [But what is a convolution? - YouTube](https://www.youtube.com/watch?v=KuXjwB4LzSA)
 - [numpy中的convolve的理解_np.convolve-CSDN博客](https://blog.csdn.net/u011599639/article/details/76254442)
 
+### Impulse response
+```python
+import numpy as np
+
+h_n = np.fft.ifft(np.fft.fft([7, 14, 21]) / np.fft.fft([1, 2, 3]))
+h_n = h_n[h_n > 0]
+
+print(np.convolve([1, 2, 3], h_n))
+```
+
 ### TODOs
 - [ ] $n < 0$ convoltution (symolically)
 - [ ] continuous time convolution (symolically)
