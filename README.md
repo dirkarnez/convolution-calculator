@@ -4,7 +4,7 @@
 - [But what is a convolution? - YouTube](https://www.youtube.com/watch?v=KuXjwB4LzSA)
 - [numpy中的convolve的理解_np.convolve-CSDN博客](https://blog.csdn.net/u011599639/article/details/76254442)
 
-### Impulse response (
+### Impulse response
 ```python
 import numpy as np
 
