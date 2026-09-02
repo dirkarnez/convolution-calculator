@@ -67,7 +67,7 @@ print(np.convolve(np.array([1, 2, 3]), np.array([4, 5, 6])))
             getPyodidePromise()
                   .then(pyodide => {
                         btnSubmit.innerText = `Submitted`;
-                        pyodide.runPython(textareaInput.value);
+                        pyodide.runPythonAsync(textareaInput.value);
                   })
                   .catch(e => {
                         btnSubmit.innerText = `${e}`;
