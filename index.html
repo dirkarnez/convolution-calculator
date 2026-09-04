@@ -52,7 +52,7 @@ print(np.convolve(np.array([1, 2, 3]), np.array([4, 5, 6])))
                     // [Basic Usage — micropip 0.11.1 documentation](https://micropip.pyodide.org/en/stable/project/usage.html)
                     // [Packages built in Pyodide — Version 314.0.6](https://pyodide.org/en/stable/usage/packages-in-pyodide.html)
                     const micropip = pyodide.pyimport("micropip");
-                    await micropip.install(["sympy==1.14.0", "lark", "antlr4-python3-runtime==4.11", "scikit-learn"]);
+                    await micropip.install(["sympy==1.14.0", "lark", "antlr4-python3-runtime==4.11", "scikit-learn", "pandas"]);
                     res(pyodide);
               });
             }
