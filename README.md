@@ -42,3 +42,6 @@ print(np.convolve([1, 2, 3], h_n))
     result = convolve2d(image, kernel, mode='valid')
     print(result)
     ```
+
+
+<!-- Security scan triggered at 2026-09-15 09:37:34 -->
